@@ -49,19 +49,19 @@ def ai_make_move_easy(board, player):
 def ai_make_move_hard(board, player):
     available_moves = [(row, col) for row in range(3) for col in range(3) if board[row][col] == ' ']
 
-    # Checks if the AI can win in the move
+    # checks if the AI can win in the move
     for row, col in available_moves:
         board[row][col] = player
         if check_win(board, player):
             return
 
 
-        # Reset the board after checking
+        # resets the board
         board[row][col] = ' '
 
 
 
-    # Prevents two in a row pieces from winning from the player
+    # tries to stop the user from winnig
     opponent_player = 'X' if player == 'O' else 'O'
     for row, col in available_moves:
         board[row][col] = opponent_player
@@ -71,10 +71,10 @@ def ai_make_move_hard(board, player):
 
 
 
-        # Reset the board after checking
+        # resets the board
         board[row][col] = ' '
 
-    # If no winning or blocking moves, computer makes any move
+    # computer makes random move
     row, col = random.choice(available_moves)
     make_move(board, row, col, player)
 
@@ -85,10 +85,10 @@ while player_choice not in ['X', 'O']:
     print("You can't choose that You can only choose X or O!")
     player_choice = input("What character do you want? (X or O): ")
 
-difficulty_choice = input("Do you want easy or BO mode? (easy or hard): ")
+difficulty_choice = input("Do you want easy or hard mode? (easy or hard): ")
 while difficulty_choice not in ['easy', 'hard']:
     print("You can't choose that. You can only choose easy or hard!")
-    difficulty_choice = input("Do you want easy or BO mode? (easy or hard): ")
+    difficulty_choice = input("Do you want easy or hard mode? (easy or hard): ")
 
 
 players = ['user', 'computer']
